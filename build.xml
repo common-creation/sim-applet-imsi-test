@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sim-applet" default="build" basedir=".">
+    <property file="version.properties"/>
+
+    <target name="clean" description="Delete build output">
+        <delete dir="build/classes"/>
+        <delete dir="out"/>
+    </target>
+
+    <target name="prepare" description="Prepare build" depends="clean">
+        <ant dir="lib/ant-javacard"/>
+        <taskdef name="javacard"
+                 classpath="lib/ant-javacard/ant-javacard.jar"
+                 classname="pro.javacard.ant.JavaCard"/>
+
+        <mkdir dir="build/classes"/>
+        <mkdir dir="out"/>
+    </target>
+
+    <target name="build" description="Build everything" depends="prepare">
+        <javacard jckit="lib/oracle_javacard_sdks/jc305u4_kit">
+            <cap output="out/applet.cap"
+                 jar="out/applet.jar"
+                 classes="build/classes"
+                 sources="src"
+                 aid="A0000001157000000000000043433101"
+                 version="${cap.version}"
+                 debug="true">
+                <import jar="lib/globalplatform-exports/org.globalplatform-1.7/gpapi-globalplatform.jar" />
+                <import jar="lib/ts_102241v130000p0/uicc-api-for-java-card-REL-13_0.jar"/>
+                <import jar="lib/31130-d30/31130_Annex_A_USIM-API.jar"/>
+                <applet aid="A0000001157000000000000043433102"
+                        class="com.common_creation.applet.imsi_test.ImsiTest" />
+            </cap>
+        </javacard>
+    </target>
+</project>

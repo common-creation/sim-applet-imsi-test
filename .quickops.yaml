@@ -1,0 +1,24 @@
+version: 1
+jobs:
+  build:
+    steps:
+      - cmd: git submodule update --init --recursive
+
+      - cmd: apt update
+
+      - cmd: wget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb
+
+      - cmd: apt install -y ./amazon-corretto-8-x64-linux-jdk.deb
+
+      - cmd: apt install -y ant
+
+      - cmd: ./bootstrap.sh
+        dir: ./lib
+
+      - cmd: ant -v -noinput -buildfile build.xml
+
+      - use: common-creation/quickops-plugin-artifact#main
+        env:
+          - ARTIFACT_PATH=./out/
+
+      - cmd: cat version.properties | grep "cap.version=" | cut -d '=' -f 2 > /data/.version

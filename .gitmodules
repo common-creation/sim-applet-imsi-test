@@ -1,0 +1,9 @@
+[submodule "lib/ant-javacard"]
+	path = lib/ant-javacard
+	url = https://github.com/martinpaljak/ant-javacard.git
+[submodule "lib/oracle_javacard_sdks"]
+	path = lib/oracle_javacard_sdks
+	url = https://github.com/martinpaljak/oracle_javacard_sdks.git
+[submodule "lib/globalplatform-exports"]
+	path = lib/globalplatform-exports
+	url = https://github.com/OpenJavaCard/globalplatform-exports.git
