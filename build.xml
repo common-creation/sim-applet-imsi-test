@@ -23,13 +23,13 @@
                  jar="out/applet.jar"
                  classes="build/classes"
                  sources="src"
-                 aid="A0000001157000000000000043433101"
+                 aid="D39210007F00000001000000494D5301"
                  version="${cap.version}"
                  debug="true">
                 <import jar="lib/globalplatform-exports/org.globalplatform-1.7/gpapi-globalplatform.jar" />
                 <import jar="lib/ts_102241v130000p0/uicc-api-for-java-card-REL-13_0.jar"/>
                 <import jar="lib/31130-d30/31130_Annex_A_USIM-API.jar"/>
-                <applet aid="A0000001157000000000000043433102"
+                <applet aid="D39210007F00000001000000494D5302"
                         class="com.common_creation.applet.imsi_test.ImsiTest" />
             </cap>
         </javacard>
